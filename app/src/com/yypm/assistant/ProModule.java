@@ -101,6 +101,32 @@ public final class ProModule {
         return "";
     }
 
+    // ============================================================ 附加卡（v8.2）
+
+    /** 是否装了附加卡。 */
+    public static boolean hasAddon() {
+        return false;
+    }
+
+    /** 附加卡状态文字。 */
+    public static String addonStatusText() {
+        return "";
+    }
+
+    /** 附加卡类型可读名。 */
+    public static String addonTypeName() {
+        return "—";
+    }
+
+    /** 附加卡打码。 */
+    public static String addonMaskedKey() {
+        return "";
+    }
+
+    /** 清空附加卡。 */
+    public static void clearAddon(Context c) {
+    }
+
     // ============================================================ 云库
 
     /** 把本地冷库读进内存。 */
