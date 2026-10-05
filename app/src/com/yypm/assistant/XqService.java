@@ -114,6 +114,11 @@ public class XqService extends AccessibilityService {
         if (!counted) { counted = true; sInstances.incrementAndGet(); }
 
         sInstance = this;
+        // ★ v6.2：服务自己把 appCtx 置上。
+        //   原来只有 MainActivity / SettingsActivity 设置，而无障碍服务可能先于两者启动
+        //   （重启手机 / 切换无障碍开关），那时 appCtx 为 null，
+        //   读配置会失败（个别设置项读不到）。
+        appCtx = getApplicationContext();
         wm = (WindowManager) getSystemService(WINDOW_SERVICE);
         // 主界面可能已经在前台了：先把悬浮窗状态定下来，避免开机闪一下
         if (mainUiForeground && !settingsOpen) overlaySelfHidden = true;
