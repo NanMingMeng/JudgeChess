@@ -91,7 +91,7 @@ jniLibs/arm64-v8a/             ← 皮卡鱼引擎
 | `Speed.java` | 速度档位 → 引擎参数映射 |
 | `MachineCode.java` | 设备机器码算法（SHA-256 前 32 位） |
 | `Remote.java` | 匿名统计上报 + 远程配置拉取 |
-| `ProModule.java` | 功能开关（免费版恒为关闭） |
+| `ProModule.java` | 付费能力门面（免费版恒为关闭） |
 | `UiTheme.java` / `ConfigProfile.java` / `DeviceProfile.java` | 主题、配置快照、设备档位 |
 
 ---

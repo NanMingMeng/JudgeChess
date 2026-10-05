@@ -10,10 +10,10 @@ import java.security.MessageDigest;
  * ★ v5.4：机器码计算（独立类）。
  *
  * 为什么从 License 里拆出来：
- *   机器码**免费版也要算**（心跳上报要用），而 License.java 净化时整文件删除。
+ *   机器码**免费版也要算**（心跳上报要用），而 License.java 属于付费模块。
  *   本类只做「设备标识 → 哈希」这一件事，不含任何授权逻辑，可安全出现在公开源码里。
  *
- * 算法（对齐《审判者卡密协议设计文档》第 4 节）：
+ * 算法：
  *   machineCode = SHA256(androidId | serial | model) 前 32 位小写 hex
  *
  * ⚠️ 坑：Android 8+ 起 ANDROID_ID 按**应用签名密钥作用域**隔离 ——
