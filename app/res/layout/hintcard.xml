@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  启动提示卡 —— 照 ColorOS「游戏助手」卡片：近黑底 + 品牌绿图标 + 白粗标题
+  + 发丝分隔线 + 下方若干状态入口。启动动画见 XqService.showHintCard()
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/hintcard_root"
+    android:layout_width="@dimen/hintcard_width"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/hintcard_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/hintcard_pad_h"
+        android:paddingRight="@dimen/hintcard_pad_h"
+        android:paddingTop="@dimen/hintcard_pad_v"
+        android:paddingBottom="@dimen/hintcard_pad_v">
+
+        <TextView
+            android:id="@+id/hc_icon"
+            android:layout_width="@dimen/hintcard_icon"
+            android:layout_height="@dimen/hintcard_icon"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="象"
+            android:textColor="@color/text_on_accent"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:background="@drawable/hintcard_icon_bg" />
+
+        <TextView
+            android:id="@+id/hc_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/space_8"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="YYPM 象棋助手"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/stroke_divider"
+        android:background="@color/hintcard_divider" />
+
+    <LinearLayout
+        android:id="@+id/hc_rows"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/hintcard_pad_h"
+        android:paddingRight="@dimen/hintcard_pad_h"
+        android:paddingTop="11dp"
+        android:paddingBottom="11dp">
+
+        <TextView
+            android:id="@+id/hc_msg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="音量 － 收起助手"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_md"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/hc_msg2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_12"
+            android:maxLines="1"
+            android:text="音量 ＋ 召回"
+            android:textColor="@color/state_info"
+            android:textSize="@dimen/text_md"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

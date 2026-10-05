@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  播报卡 —— 权限步骤队列用（v4.1）
+  ============================================================================
+  区别于 hintcard：这是「一次只显示一张、一张接一张」的通知条，
+  所以做成紧凑单行（图标 + 步骤名 + 说明），高度约 40dp。
+
+  动画（见 XqService.enqueueCard / MainActivity.showLocalCard）：
+    从下方 24dp 上移到额头位置 → 停留 1.7s → 继续上移 28dp 淡出 → 下一张。
+  两张之间绝不重叠。
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ac_root"
+    android:layout_width="@dimen/announce_width"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/announce_bg"
+    android:paddingLeft="@dimen/announce_pad_h"
+    android:paddingRight="@dimen/announce_pad_h"
+    android:paddingTop="@dimen/announce_pad_v"
+    android:paddingBottom="@dimen/announce_pad_v">
+
+    <TextView
+        android:id="@+id/ac_icon"
+        android:layout_width="@dimen/announce_icon"
+        android:layout_height="@dimen/announce_icon"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:text="象"
+        android:textColor="@color/text_on_accent"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:background="@drawable/announce_icon_bg" />
+
+    <TextView
+        android:id="@+id/ac_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_8"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:text=""
+        android:textColor="@color/text_primary"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/ac_msg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="@dimen/space_6"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="@color/text_secondary"
+        android:textSize="10sp" />
+</LinearLayout>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  YYPM 设计 token —— 尺寸
+  4dp 基础栅格 / 8dp 主栅格。密度：本机 1272×2800 @ density 3.5 → 1dp = 3.5px
+-->
+<resources>
+
+    <!-- ==================== 间距 ==================== -->
+    <dimen name="space_2">2dp</dimen>
+    <dimen name="space_3">3dp</dimen>
+    <dimen name="space_4">4dp</dimen>
+    <dimen name="space_6">6dp</dimen>
+    <dimen name="space_8">8dp</dimen>
+    <dimen name="space_10">10dp</dimen>
+    <dimen name="space_12">12dp</dimen>
+    <dimen name="space_16">16dp</dimen>
+    <dimen name="space_20">20dp</dimen>
+    <dimen name="space_24">24dp</dimen>
+    <dimen name="space_32">32dp</dimen>
+
+    <!-- ==================== 圆角 ==================== -->
+    <dimen name="radius_sm">6dp</dimen>
+    <dimen name="radius_md">10dp</dimen>
+    <dimen name="radius_lg">14dp</dimen>
+    <dimen name="radius_xl">20dp</dimen>
+    <dimen name="radius_full">999dp</dimen>
+
+    <!-- ==================== 描边 ==================== -->
+    <dimen name="stroke_hairline">1dp</dimen>
+    <dimen name="stroke_thick">1.5dp</dimen>
+    <dimen name="stroke_divider">1px</dimen>
+
+    <!-- ==================== 字号 ==================== -->
+    <dimen name="text_xs">9sp</dimen>
+    <dimen name="text_sm">11sp</dimen>
+    <dimen name="text_md">13sp</dimen>
+    <dimen name="text_lg">16sp</dimen>
+    <dimen name="text_xl">20sp</dimen>
+    <dimen name="text_display">24sp</dimen>
+
+    <!-- ==================== 触控目标 ==================== -->
+    <dimen name="touch_min">48dp</dimen>
+    <dimen name="touch_comfort">44dp</dimen>
+    <!-- v4.31：圆形按钮统一尺寸。
+         原来左栏的「链 / 识 / 自」是 30dp、右栏的「✕ / ⠿ / —」是 26dp，
+         同一块悬浮窗里两种大小，看着不整齐（用户反馈）。
+         现在两边都用这个值，六个构件完全一致。 -->
+    <dimen name="btn_circle_size">26dp</dimen>
+    <dimen name="btn_circle_hit">44dp</dimen>
+
+    <!-- ==================== 悬浮面板 ==================== -->
+    <dimen name="panel_pad">8dp</dimen>
+    <dimen name="panel_radius">14dp</dimen>
+    <!-- v4.32：悬浮窗固定高度。面板原来是 wrap_content，折叠分析区 / 隐藏构件
+         都会让面板忽大忽小（实测同一配置下 374px 与 509px 来回跳）。
+         现在面板高度写死，任何设置都不再改变悬浮窗尺寸。 -->
+    <!-- v4.36：168dp 改成 176dp —— 实测「所有构件全显示 + 分析区展开」需要 509px，
+         原来内容区只有 532px，余量偏紧；现在内容区 560px，留 51px 余量。 -->
+    <dimen name="panel_fixed_h">176dp</dimen>
+    <!-- v4.32：设置页分类选项卡高度 -->
+    <dimen name="tab_h">34dp</dimen>
+    <dimen name="panel_btn_gap">3dp</dimen>
+    <dimen name="panel_section_gap">4dp</dimen>
+    <dimen name="sp_pill_h">24dp</dimen>
+    <dimen name="eval_bar_h">6dp</dimen>
+    <dimen name="miniboard_min_w">120dp</dimen>
+    <dimen name="miniboard_max_w">200dp</dimen>
+
+    <!-- ==================== 悬浮小球 ==================== -->
+    <dimen name="ball_size">44dp</dimen>
+    <dimen name="ball_margin">8dp</dimen>
+
+    <!-- ==================== 启动提示卡 ==================== -->
+    <dimen name="hintcard_width">280dp</dimen>
+    <dimen name="hintcard_radius">20dp</dimen>
+    <dimen name="hintcard_pad_h">16dp</dimen>
+    <dimen name="hintcard_pad_v">13dp</dimen>
+    <dimen name="hintcard_icon">22dp</dimen>
+    <!-- ==================== 播报卡（权限步骤队列） ==================== -->
+    <dimen name="announce_width">272dp</dimen>
+    <dimen name="announce_radius">18dp</dimen>
+    <dimen name="announce_icon">18dp</dimen>
+    <dimen name="announce_pad_h">13dp</dimen>
+    <dimen name="announce_pad_v">10dp</dimen>
+    <dimen name="announce_top">52dp</dimen>
+
+    <!-- ==================== 主界面 ==================== -->
+    <dimen name="app_pad_h">11dp</dimen>
+    <dimen name="app_pad_top">20dp</dimen>
+    <dimen name="app_pad_bottom">14dp</dimen>
+    <dimen name="app_row_gap">4dp</dimen>
+
+</resources>

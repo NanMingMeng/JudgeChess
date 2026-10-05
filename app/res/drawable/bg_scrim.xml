@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  v4.7 背景板压暗层：从左（文字侧）到右（棋盘侧）渐变的深色蒙版。
+  用途：人物封面直接当底会给浅色区域蹭掉文字对比度，加这一层之后
+  左侧文字区更暗、右侧人像更亮，形成「左边看字、右边看人」的层次。
+
+  ★ 数值同 panel_bg_glass：调太厚人像就没了（0.8 以上的覆盖率实测看不见人）。
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <gradient
+        android:angle="0"
+        android:startColor="#7005090C"
+        android:centerColor="#2405090C"
+        android:endColor="#4005090C" />
+    <corners android:radius="@dimen/panel_radius" />
+</shape>

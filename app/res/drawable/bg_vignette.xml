@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  v4.52「暗角」：中间透亮、四周收暗的径向渐变。
+
+  用途：叠在人物之上、内容之下，让画面有「焦点」——
+  人物像从板子里浮出来，而不是贴在上面的一层灰画。
+  参数保守：外圈只到 42% 黑，再重就显脏。
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <gradient
+        android:type="radial"
+        android:centerX="0.46"
+        android:centerY="0.44"
+        android:gradientRadius="0.82"
+        android:startColor="#00000000"
+        android:endColor="#6B000000" />
+    <corners android:radius="@dimen/panel_radius" />
+</shape>

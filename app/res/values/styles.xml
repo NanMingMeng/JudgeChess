@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  YYPM 组件样式
+  把「按钮」这类重复属性的集合收成 style，layout 里只写差异（id/text/背景）。
+-->
+<resources>
+
+    <!-- 面板上的圆形按钮：尺寸与字号统一（v4.31 起六个构件一致） -->
+    <style name="PanelCircleBtn">
+        <item name="android:layout_width">@dimen/btn_circle_size</item>
+        <item name="android:layout_height">@dimen/btn_circle_size</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textSize">@dimen/text_sm</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/btn_idle_text</item>
+        <item name="android:background">@drawable/btn_circle</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <!-- v4.31：右栏小圆钮（✕ / ⠿ / —）。
+         原来这里把尺寸压到 26dp、字号压到 9sp，而左栏的「链 / 识 / 自」是 30dp / 11sp，
+         同一块悬浮窗里两种大小，看着不整齐（用户反馈）。
+         现在尺寸和字号都继承 PanelCircleBtn，六个构件完全一致；
+         这个 style 名字保留，方便以后真要区分时再有地方下手。 -->
+    <style name="PanelMiniBtn" parent="PanelCircleBtn" />
+
+    <!-- 走棋速度 pill -->
+    <style name="PanelPill">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/sp_pill_h</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textSize">@dimen/text_sm</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/btn_idle_text</item>
+        <item name="android:background">@drawable/btn_pill</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+</resources>

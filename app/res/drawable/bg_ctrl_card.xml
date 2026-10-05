@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  v4.7 控制栏卡底（设置里选「加卡底」时用）：
+  半透明深色圆角卡，给按钮/文字一个稳定的底，人像仍然透得过来。
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="#B00B1116" />
+    <corners android:radius="8dp" />
+</shape>

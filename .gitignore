@@ -1,0 +1,40 @@
+# 构建产物
+*.apk
+*.idsig
+*.ap_
+*.dex
+*.class
+build/
+rel/
+stage/
+out/
+
+# 大体积资源（自行放置）
+assets/
+jniLibs/
+
+# 备份文件
+*.bak
+*.bak[0-9]*
+*.bak_*
+*.prebak
+
+# 签名与密钥 —— 绝对不入库
+*.keystore
+*.jks
+*.pem
+*.p12
+local.properties
+
+# IDE
+.idea/
+*.iml
+.gradle/
+.vscode/
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 日志
+*.log

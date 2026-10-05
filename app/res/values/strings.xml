@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">审判者</string>
+    <string name="service_name">审判者</string>
+    <string name="acc_desc">审判者：识别屏幕上的象棋棋盘并给出最优着法。开启后可自动截图识别、浮窗提示、一键落子。</string>
+</resources>

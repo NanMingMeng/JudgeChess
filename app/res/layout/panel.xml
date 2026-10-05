@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  YYPM 悬浮面板 v4.0
+  ============================================================================
+  结构：[左栏：按钮排(识/自) + 评分条 + 着法/计时 + 预判 + 状态][小棋盘][右栏 链/✕/⠿/—]
+
+  ★ v4.17：链 / 识 / 自 三个按钮的**所在列**可以在设置页里自由切换
+     （「按钮排」还是「右侧竖列」），链默认排在右栏最上面。
+
+  ★ v4.8：执子(红)、分析区(析)、走棋速度、前台校验 四个「一次设定、长期不变」的
+     控件已从面板挪进「设置 / 个性化」页 —— 面板只留对局中要随手按的三个圆按钮，
+     按钮排窄了、速度那一行整排消失，面板明显变矮（更不挡棋盘）。
+
+  设计 token 见 res/values/colors.xml + dimens.xml（不再有硬编码色值）
+
+  布局约束（重要）：
+    面板满屏宽 363dp。左栏宽度由 row_btn 的「自然宽度」兜底（3×30dp + 间距 ≈ 96dp），
+    小棋盘吃掉剩余空间，并由 XqService.setupMiniBoardFit() 按左栏实际高度反推宽度。
+    所以这里 board_mini 写 wrap_content，尺寸全部交给运行时算。
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- ==================== v4.7 个性化背景板（最底层） ==================== -->
+    <!-- 人物封面。默认用内置那张；用户在设置里换图时这里换成他选的照片 -->
+    <ImageView
+        android:id="@+id/bg_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        android:contentDescription="@null" />
+
+    <!-- 压暗层：保证文字/按钮落在亮背景上也看得清 -->
+    <View
+        android:id="@+id/bg_scrim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_scrim"
+        android:visibility="gone" />
+
+    <!-- v4.52：暗角层（中间透亮、四周收暗）。叠在人物之上、内容之下，
+         只在「轮廓光 / 综合」两个方案里可见，由代码控制。 -->
+    <View
+        android:id="@+id/bg_vignette"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_vignette"
+        android:visibility="gone" />
+
+
+    <LinearLayout
+        android:id="@+id/row_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@drawable/panel_bg"
+        android:padding="@dimen/panel_pad"
+        android:gravity="top">
+
+        <!-- ==================== 左：控制区 ==================== -->
+        <LinearLayout
+            android:id="@+id/col_left"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- ========== 按钮排 ========== -->
+            <LinearLayout
+                android:id="@+id/row_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <Button
+                    android:id="@+id/btn_link"
+                    android:layout_width="@dimen/btn_circle_size"
+                    android:layout_height="@dimen/btn_circle_size"
+                    style="@style/PanelCircleBtn"
+                    android:text="链" />
+
+                <Button
+                    android:id="@+id/btn_one"
+                    android:layout_width="@dimen/btn_circle_size"
+                    android:layout_height="@dimen/btn_circle_size"
+                    style="@style/PanelCircleBtn"
+                    android:layout_marginLeft="@dimen/panel_btn_gap"
+                    android:text="识" />
+
+                <Button
+                    android:id="@+id/btn_light"
+                    android:layout_width="@dimen/btn_circle_size"
+                    android:layout_height="@dimen/btn_circle_size"
+                    style="@style/PanelCircleBtn"
+                    android:layout_marginLeft="@dimen/panel_btn_gap"
+                    android:text="自"
+                    android:textSize="@dimen/text_md"
+                    android:textColor="@color/text_on_accent"
+                    android:background="@drawable/btn_circle_amber" />
+            </LinearLayout>
+
+            <!-- ========== 形势评分条（文字压在条上，旧版样式） ========== -->
+            <LinearLayout
+                android:id="@+id/row_eval"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="54dp"
+                android:orientation="horizontal">
+
+                <com.yypm.assistant.EvalBar
+                    android:id="@+id/eval_bar"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/eval_bar_h"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <!-- ========== 本局计时 ========== -->
+            <LinearLayout
+                android:id="@+id/row_move"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_4"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tv_timer"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:00"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/text_sm"
+                    android:includeFontPadding="false"
+                    android:textStyle="bold"
+                    android:fontFamily="monospace" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_4"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="初始化中…"
+                android:textColor="@color/text_primary"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- ==================== 中：实时小棋盘 ==================== -->
+        <com.yypm.assistant.BoardView
+            android:id="@+id/board_mini"
+            android:layout_width="@dimen/miniboard_max_w"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_4" />
+
+        <!-- ==================== 右：操作列（✕ / 拖动 / 折叠） ==================== -->
+        <LinearLayout
+            android:id="@+id/col_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_4"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/btn_close"
+                style="@style/PanelMiniBtn"
+                android:text="✕"
+                android:textColor="@color/state_danger"
+                android:background="@drawable/btn_circle_close" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="@dimen/space_4"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="⠿"
+                android:textColor="@color/brand"
+                android:textSize="@dimen/text_sm"
+                android:background="@drawable/btn_circle_grip" />
+
+            <!-- ★ v4.72：连开（绝杀后自动点「再来一局」）—— 右栏底部小钮 -->
+            <Button
+                android:id="@+id/btn_liankai"
+                style="@style/PanelMiniBtn"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:text="开"
+                android:textSize="@dimen/text_sm"
+                android:textColor="@color/btn_idle_text"
+                android:background="@drawable/btn_circle" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

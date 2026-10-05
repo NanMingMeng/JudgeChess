@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  v4.52「文字软底」：文字栏背后垫一条更实的暗色，向右柔化到 60% 处消失。
+
+  和 bg_scrim_left 的区别：左侧更实（文字对比度更高），
+  但衰减点更靠右（60%），边界过渡更平缓，不会看出「一条分界线」。
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <gradient
+        android:angle="0"
+        android:startColor="#B805090C"
+        android:centerColor="#4D05090C"
+        android:endColor="#0005090C" />
+    <corners android:radius="@dimen/panel_radius" />
+</shape>

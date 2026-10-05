@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  v4.52「局部遮罩」：只在**左半**（文字栏）压暗，到 50% 处完全透明。
+
+  为什么：原来的 bg_scrim 是横跨整块面板的渐变，可文字其实只占左边一半，
+  右半的遮罩纯属把人物白白压灰。这一版把遮罩收进文字栏范围，
+  棋盘和按钮那一侧完全不加 —— 人物以接近原图的亮度透出来。
+
+  注意：本文件自带满强度 alpha，配合 setAlpha(1f) 使用（不再被浓度滑杆缩放）。
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <gradient
+        android:angle="0"
+        android:startColor="#9C05090C"
+        android:centerColor="#1A05090C"
+        android:endColor="#0005090C" />
+    <corners android:radius="@dimen/panel_radius" />
+</shape>

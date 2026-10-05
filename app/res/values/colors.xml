@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  YYPM 设计 token —— 颜色
+  三层级：primitive（原始色值）→ semantic（按用途命名）→ 组件直用 semantic
+  基调：深色为主（面板在对局中常驻眼前，深色最不刺眼）
+  品牌绿对齐 ColorOS 游戏助手，让两处观感是一套的。
+-->
+<resources>
+
+    <!-- ==================== 表面层级 ==================== -->
+    <color name="surface_panel">#FA0D1116</color>
+    <color name="surface_card">#FF161C23</color>
+    <color name="surface_raised">#FF1F2731</color>
+    <color name="surface_sunken">#FF090C0F</color>
+    <color name="surface_ball">#F00D1116</color>
+
+    <!-- ==================== 描边 ==================== -->
+    <color name="stroke_subtle">#1AFFFFFF</color>
+    <color name="stroke_default">#2EFFFFFF</color>
+    <color name="stroke_strong">#47FFFFFF</color>
+
+    <!-- ==================== 文字 ==================== -->
+    <color name="text_primary">#FFF2F6FA</color>
+    <color name="text_secondary">#FFA8B4C0</color>
+    <color name="text_tertiary">#FF737F8C</color>
+    <color name="text_dim">#FF5C6874</color>
+    <color name="text_on_accent">#FF0B1014</color>
+
+    <!-- ==================== 品牌 / 强调 ==================== -->
+    <color name="brand">#FF7ED321</color>
+    <color name="brand_soft">#337ED321</color>
+    <color name="brand_strong">#FF9BE33A</color>
+
+    <!-- 我方=绿、敌方=紫；与 BoardView 箭头色必须一致 -->
+    <color name="accent_my">#FF2BE06B</color>
+    <color name="accent_my_soft">#332BE06B</color>
+    <color name="accent_opp">#FFB16CFF</color>
+    <color name="accent_opp_soft">#33B16CFF</color>
+
+    <!-- ==================== 语义状态 ==================== -->
+    <color name="state_ok">#FF2BE06B</color>
+    <color name="state_warn">#FFFFB020</color>
+    <color name="state_warn_strong">#FFFFD070</color>
+    <color name="state_danger">#FFFF5A5A</color>
+    <color name="state_danger_dim">#1FFF5A5A</color>
+    <color name="state_danger_line">#66FF5A5A</color>
+    <color name="state_info">#FF5AB0FF</color>
+    <color name="state_idle">#FF737F8C</color>
+
+    <!-- ==================== 按钮（未激活 / 次要）==================== -->
+    <color name="btn_idle_fill">#14FFFFFF</color>
+    <color name="btn_idle_text">#FFE8EDF2</color>
+    <color name="btn_quiet_fill">#0AFFFFFF</color>
+    <color name="btn_quiet_text">#FFA8B4C0</color>
+    <color name="pill_idle_fill">#12FFFFFF</color>
+
+    <!-- ==================== 棋盘 / 棋子 ==================== -->
+    <color name="board_wood">#FFF2E0BB</color>
+    <color name="board_frame">#FF8A6A3C</color>
+    <color name="board_grid">#FF9C7C4C</color>
+    <color name="board_river">#FFA88A55</color>
+    <color name="piece_disk">#FFFDF6E3</color>
+    <color name="piece_ring">#FFC9A063</color>
+    <color name="piece_edge">#FF8A6A3C</color>
+    <color name="piece_red">#FFD32F2F</color>
+    <color name="piece_black">#FF1B1B1B</color>
+
+    <!-- ==================== 提示卡 ==================== -->
+    <color name="hintcard_bg">#FF0D0F12</color>
+    <color name="hintcard_divider">#1AFFFFFF</color>
+    <color name="announce_bg">#FA0D0F12</color>
+    <color name="announce_line">#24FFFFFF</color>
+
+
+    <!-- 主界面横幅（浅底 + 描边，替代原来的一坨实色块）-->
+    <color name="state_ok_dim">#242BE06B</color>
+    <color name="state_ok_line">#4D2BE06B</color>
+    <color name="state_warn_dim">#24FFB020</color>
+    <color name="state_warn_line">#4DFFB020</color>
+    <color name="state_info_dim">#245AB0FF</color>
+    <color name="row_fill">#0BFFFFFF</color>
+</resources>
