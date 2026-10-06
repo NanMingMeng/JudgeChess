@@ -102,6 +102,8 @@ public class MainActivity extends Activity {
         try { XqService.appCtx = getApplicationContext(); } catch (Throwable ignored) {}
         // ★ v5.4：远程配置（联系方式等）+ 心跳上报。免费版也保留 —— 两个都是公开接口。
         try { Remote.startup(this); } catch (Throwable ignored) {}
+        // ★ v8.3：更新提示。一天最多一次；不改动任何现有界面，只叠一个原生对话框。
+        try { Remote.maybeCheckUpdate(this); } catch (Throwable ignored) {}
 
         final String vn = versionName();
 
